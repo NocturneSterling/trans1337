@@ -1,12 +1,15 @@
 import java.io.*;
 //import java.nio.*;
-//import java.util.*;
+import java.util.*;
 public class mainClass{
     public void main(String [] args){
-        String inputString = "this is a test";
+        Scanner inputScan = new Scanner(System.in);
+        String inputString = inputScan.nextLine();
         System.out.println("Input String: " + inputString);
+        
         String output = transToLeet(inputString);
         System.out.println("output: " + output);
+        
     }
 
 
@@ -17,6 +20,7 @@ public class mainClass{
     String[][] transArray = csvToArrayList("leetSimple.csv");
     
     for (int i = 0; i < input.length(); i++){
+
         int charIndex = stringToInt(input, i);
         int arrayOptions = transArray[charIndex].length;
         String transChar = transArray[charIndex][(int)(Math.random() * arrayOptions)];
@@ -32,11 +36,12 @@ public class mainClass{
     char currentChar = input.charAt(i);
     if (Character.isLetter(currentChar)){
         int csvNumber = Character.getNumericValue(currentChar);
-    output = csvNumber;
+    output = csvNumber - 10;
+    //System.out.println(output);
     return output;
     }
     else{
-    return 0;
+    return 26;
     }
     }
 
